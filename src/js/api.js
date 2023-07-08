@@ -1,4 +1,3 @@
-import axios from 'axios';
 import {
   showEmptyArrayMessage,
   showEndCollectionMessage,
@@ -24,8 +23,12 @@ async function getApiResponse(searchTerm) {
   requestParameters.q = searchTerm;
 
   try {
-    const response = await axios.get(BASE_URL, { params: requestParameters });
-    const images = response.data;
+    const response = await fetch(
+      buildUrlWithParams(BASE_URL, requestParameters)
+    );
+    const data = await response.json();
+
+    const images = data;
 
     const pagesAmount = Math.ceil(
       images.totalHits / requestParameters.per_page
@@ -43,6 +46,14 @@ async function getApiResponse(searchTerm) {
   } catch (error) {
     console.log(error);
   }
+}
+
+function buildUrlWithParams(url, params) {
+  const urlObject = new URL(url);
+  Object.entries(params).forEach(([key, value]) => {
+    urlObject.searchParams.append(key, value);
+  });
+  return urlObject.toString();
 }
 
 function showInfo(images, pagesAmount) {

@@ -1,0 +1,257 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  color: #212121;
+  background: linear-gradient(
+    -45deg,
+    #767f8a,
+    #646d78,
+    #525b66,
+    #404954,
+    #2e3742,
+    #1f2937,
+    #111827
+  );
+  background-size: 400% 400%;
+  background-attachment: fixed;
+  animation: gradient 15s ease infinite;
+}
+
+p {
+  margin: 0;
+}
+
+img,
+picture {
+  display: block;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+a {
+  display: block;
+  margin: 0;
+  text-decoration: none;
+  color: currentColor;
+}
+
+button {
+  display: block;
+  margin: 0;
+  padding: 5px;
+  font-size: 1rem;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+
+  background: linear-gradient(-45deg, #767f8a, #646d78, #525b66);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+}
+
+button:focus,
+button:hover {
+  background: rgba(242, 230, 230, 0.5);
+}
+
+.visually-hidden {
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  border: 0;
+  padding: 0;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  margin: -1px;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  width: 100%;
+  padding: 15px 0;
+  transition: background-color 300ms ease-out, backdrop-filter 300ms ease-out;
+}
+
+.header--no-transparency {
+  background-color: rgba(0, 0, 0, 0.3);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+}
+
+#search-form {
+  display: flex;
+  align-items: center;
+  font: inherit;
+  position: relative;
+  width: 25vw;
+  border-radius: 10px;
+}
+
+.search-form input,
+.search-form button {
+  border: 0;
+  padding: 5px;
+  font-size: 1.5vw;
+}
+
+.search-form input {
+  outline: 0;
+  width: 100%;
+  border-radius: 10px;
+  appearance: none;
+  transition: all 0.3s cubic-bezier(0, 0, 0.43, 1.49);
+  transition-property: width, border-radius;
+  z-index: 1;
+  position: relative;
+}
+
+.search-form button {
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 10vw;
+  font-weight: bold;
+  border-radius: 0 10px 10px 0;
+  margin-left: auto;
+  margin-right: auto;
+  background: linear-gradient(-45deg, #767f8a, #646d78, #525b66);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+}
+.search-form button:focus,
+.search-form button:hover {
+  background: rgba(242, 230, 230, 0.5);
+}
+.search-form input:not(:placeholder-shown) {
+  border-radius: 10px 0 0 10px;
+  width: calc(100% - 10vw);
+}
+
+input:not(:placeholder-shown) + button {
+  display: block;
+}
+
+label {
+  position: absolute;
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 0;
+  border: 0;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+}
+
+/* Gallery */
+.gallery_section {
+  margin-left: auto;
+  margin-right: auto;
+  padding: 70px 20px 50px 20px;
+}
+
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  width: 95vw;
+  gap: calc(95vw / 4.3 * 0.1);
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: space-evenly;
+}
+
+.gallery a {
+  width: calc(100% / 4.3);
+}
+
+.photo-card {
+  width: 100%;
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: rgba(242, 230, 230, 0.5);
+}
+
+.photo-card:hover,
+.photo-card:focus {
+  box-shadow: 0px 1px 1px rgba(255, 255, 255, 0.2),
+    0px 4px 4px rgba(255, 255, 255, 0.1), 1px 4px 6px rgba(255, 255, 255, 0.3);
+  transform: scale(1.05);
+}
+
+.photo-card img {
+  width: 100%;
+  height: 12vw;
+  object-fit: cover;
+}
+
+.info {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-wrap: wrap;
+  text-align: center;
+  font-size: 1vw;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.info p {
+  padding: 5px;
+  flex: 0 0 50%;
+}
+
+@media screen and (max-width: 768px) {
+  .info {
+    display: block;
+    text-align: start;
+  }
+  .info p {
+    padding-top: 1px;
+    padding-bottom: 1px;
+    font-size: 1.2vw;
+  }
+}
+
+.load-more {
+  width: 10vw;
+  display: block;
+  margin-top: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 1.2vw;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
